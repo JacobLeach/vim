@@ -1,3 +1,4 @@
+set nu
 set background=dark
 colorscheme vividchalk 
 set t_Co=256
