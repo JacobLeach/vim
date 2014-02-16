@@ -1,4 +1,5 @@
 execute pathogen#infect()
+filetype plugin indent on
 set nu
 set background=dark
 colorscheme vividchalk 
