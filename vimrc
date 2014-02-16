@@ -1,3 +1,4 @@
+execute pathogen#infect()
 set nu
 set background=dark
 colorscheme vividchalk 
