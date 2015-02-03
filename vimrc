@@ -41,6 +41,12 @@ set cursorline
 set ruler
 set backspace=start,indent,eol
 
+" Persistent undo
+set undodir=~/.vim/.undo
+set undofile
+set undolevels=1000
+set undoreload=10000
+
 "Plugin Configuration
 
 " Enable hard mode
@@ -50,3 +56,9 @@ let g:HardMode_level = 'wannabe'
 
 " Enable hard time
 let g:hardtime_default_on = 1
+
+" Compiled vim is not hitting system wide vimrc
+" Go back to previous line number on file reopen
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
