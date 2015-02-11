@@ -54,8 +54,23 @@ autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " Enable backspace and h,j,k,l
 let g:HardMode_level = 'wannabe'
 
-" Enable hard time
-let g:hardtime_default_on = 1
+" Enable / disable hard time
+let g:hardtime_default_on = 0
+
+" Set EasyMotion control key to space
+let g:EasyMotion_leader_key = '<Space>'
+
+" Set YouCompleteMe global config
+let g:ycm_global_ycm_extra_conf = '/home/user/jleach/.ycm_extra_conf.py'
+
+" YCM whitelist
+let g:ycm_filetype_whitelist = { '*': 1 }
+
+" Set YCM to complete after 1 character
+let g:ycm_min_num_of_chars_for_completion = 1
+
+" Remove trailing whitespace in Javscript files
+autocmd bufwritepre *.js silent! :%s/\s\+$//
 
 " Compiled vim is not hitting system wide vimrc
 " Go back to previous line number on file reopen
