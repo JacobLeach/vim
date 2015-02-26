@@ -12,6 +12,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wikitopian/hardmode'
 Plugin 'takac/vim-hardtime'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype indent plugin on
@@ -29,6 +30,8 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
+" Only indent HTML files 2 spaces
+autocmd FileType html set tabstop=2|set shiftwidth=2
 
 " Searching stuff
 set incsearch
