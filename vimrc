@@ -13,6 +13,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'wikitopian/hardmode'
 Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-surround'
+Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -20,6 +21,13 @@ filetype indent plugin on
 " Colors
 syntax on
 colorscheme vividchalk
+
+" Always show status line
+" This for some reason sets the background of the line to white
+set laststatus=2
+
+" Fixes statusline background color
+highlight statusLine cterm=bold ctermfg=white ctermbg=black
 
 " Relative and absolute line numbers
 set relativenumber
@@ -72,8 +80,8 @@ let g:ycm_filetype_whitelist = { '*': 1 }
 " Set YCM to complete after 1 character
 let g:ycm_min_num_of_chars_for_completion = 1
 
-" Remove trailing whitespace in Javscript files
-autocmd bufwritepre *.js silent! :%s/\s\+$//
+" Remove trailing whitespace in Javscript files, and HTML template files
+autocmd bufwritepre *.js,*.tpl.html silent! :%s/\s\+$//
 
 " Compiled vim is not hitting system wide vimrc
 " Go back to previous line number on file reopen
