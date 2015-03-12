@@ -58,6 +58,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" Ramap leader to comma
+let mapleader = ","
+
 "Plugin Configuration
 
 " Enable hard mode
@@ -73,6 +76,9 @@ let g:EasyMotion_leader_key = '<Space>'
 
 " YCM whitelist
 let g:ycm_filetype_whitelist = { '*': 1 }
+
+" Map <Leader>g to YCM's best guess GoTo function
+nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " Set YCM to complete after 1 character
 let g:ycm_min_num_of_chars_for_completion = 1
