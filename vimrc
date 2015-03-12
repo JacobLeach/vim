@@ -71,9 +71,6 @@ let g:hardtime_default_on = 0
 " Set EasyMotion control key to space
 let g:EasyMotion_leader_key = '<Space>'
 
-" Set YouCompleteMe global config
-let g:ycm_global_ycm_extra_conf = '/home/user/jleach/.ycm_extra_conf.py'
-
 " YCM whitelist
 let g:ycm_filetype_whitelist = { '*': 1 }
 
@@ -82,9 +79,3 @@ let g:ycm_min_num_of_chars_for_completion = 1
 
 " Remove trailing whitespace in Javscript files, and HTML template files
 autocmd bufwritepre *.js,*.tpl.html silent! :%s/\s\+$//
-
-" Compiled vim is not hitting system wide vimrc
-" Go back to previous line number on file reopen
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
