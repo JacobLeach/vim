@@ -14,13 +14,16 @@ Plugin 'wikitopian/hardmode'
 Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-surround'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'travitch/hasksyn'
+Plugin 'mtglsk/mushroom'
 
 call vundle#end()
 filetype indent plugin on
 
 " Colors
 syntax on
-colorscheme vividchalk
+colorscheme mushroom
+set t_Co=256
 
 " Always show status line
 " This for some reason sets the background of the line to white
@@ -61,6 +64,9 @@ set undoreload=10000
 " Ramap leader to comma
 let mapleader = ","
 
+" Show me where column 80 is
+set colorcolumn=80
+
 "Plugin Configuration
 
 " Enable hard mode
@@ -84,4 +90,4 @@ nnoremap <leader>g :YcmCompleter GoTo<CR>
 let g:ycm_min_num_of_chars_for_completion = 1
 
 " Remove trailing whitespace in Javscript files, and HTML template files
-autocmd bufwritepre *.js,*.tpl.html silent! :%s/\s\+$//
+autocmd bufwritepre *.hs,*.js,*.tpl.html silent! :%s/\s\+$//
