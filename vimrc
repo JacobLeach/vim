@@ -16,9 +16,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'travitch/hasksyn'
 Plugin 'mtglsk/mushroom'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'derekwyatt/vim-fswitch'
 
 call vundle#end()
 filetype indent plugin on
+
+" Display UTF8
+set encoding=utf-8
 
 " Colors
 syntax on
@@ -69,6 +75,9 @@ set colorcolumn=80
 
 "Plugin Configuration
 
+" Not really what this changes
+let g:cpp_class_scope_highlight = 1
+
 " Enable hard mode
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " Enable backspace and h,j,k,l
@@ -91,3 +100,14 @@ let g:ycm_min_num_of_chars_for_completion = 1
 
 " Remove trailing whitespace in Javscript files, and HTML template files
 autocmd bufwritepre *.hs,*.js,*.tpl.html silent! :%s/\s\+$//
+
+" Replace default movement with camel case sensitive ones
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
+
+"\of to open in same window
+nmap <silent> <Leader>of :FSHere<cr>
