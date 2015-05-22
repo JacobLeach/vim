@@ -47,8 +47,6 @@ set autoindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
-" Only indent Javascript files 2 spaces
-autocmd FileType javascript set tabstop=4|set shiftwidth=4
 
 " Searching stuff
 set incsearch
