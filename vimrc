@@ -68,9 +68,6 @@ set undoreload=10000
 " Set buffer size to 10,000
 set viminfo='50,<10000,s10000,h
 
-" Ramap leader to comma
-let mapleader = ","
-
 " Show me where column 80 is
 set colorcolumn=80
 
