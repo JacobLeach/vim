@@ -99,13 +99,13 @@ let g:ycm_min_num_of_chars_for_completion = 1
 " Remove trailing whitespace in Javscript files, and HTML template files
 autocmd bufwritepre *.hs,*.js,*.tpl.html silent! :%s/\s\+$//
 
-" Replace default movement with camel case sensitive ones
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
+"Replace default movement with camel case sensitive ones
+"map <silent> w <Plug>CamelCaseMotion_w
+"map <silent> b <Plug>CamelCaseMotion_b
+"map <silent> e <Plug>CamelCaseMotion_e
+"sunmap w
+"sunmap b
+"sunmap e
 
 "\of to open in same window
 nmap <silent> <Leader>of :FSHere<cr>
