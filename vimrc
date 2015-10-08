@@ -7,18 +7,25 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'valloric/MatchTagAlways'
 Plugin 'tpope/vim-vividchalk'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wikitopian/hardmode'
 Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-surround'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'travitch/hasksyn'
 Plugin 'mtglsk/mushroom'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'derekwyatt/vim-fswitch'
+"Plugin 'JessicaKMcIntosh/Vim' Breaks suff
+Plugin 'rhysd/vim-clang-format'
+Plugin 'nelstrom/vim-visual-star-search'
+"Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -43,10 +50,13 @@ set relativenumber
 set number
 
 " Tab stuff
+set smartindent
 set autoindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
+" Indent Javascript files 4 spaces
+autocmd FileType javascript set tabstop=4|set shiftwidth=4
 
 " Searching stuff
 set incsearch
@@ -57,7 +67,7 @@ set ignorecase
 " Random stuff
 set cursorline
 set ruler
-set backspace=start,indent,eol
+set backspace=2
 
 " Persistent undo
 set undodir=~/.vim/.undo
@@ -91,10 +101,15 @@ let g:EasyMotion_leader_key = '<Space>'
 let g:ycm_filetype_whitelist = { '*': 1 }
 
 " Map <Leader>g to YCM's best guess GoTo function
-nnoremap <leader>g :YcmCompleter GoTo<CR>
+noremap <leader>g :YcmCompleter GoTo<CR>
 
-" Set YCM to complete after 1 character
+" let YCM to complete after 1 character
 let g:ycm_min_num_of_chars_for_completion = 1
+
+" Stolen from Joe
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_complete_in_comments = 1
 
 " Remove trailing whitespace in Javscript files, and HTML template files
 autocmd bufwritepre *.hs,*.js,*.tpl.html silent! :%s/\s\+$//
@@ -116,3 +131,23 @@ let b:vim=b:thisdir."/.vim"
 if (filereadable(b:vim))
     execute "source ".b:vim
 endif
+
+let g:clang_format#code_style = "google"
+let g:clang_format#style_options = {
+            \ "ColumnLimit" : 120 }
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_auto_loc_list = 0 
+"
+"let g:syntastic_javascript_checkers = ['jshint']
+
+" Search from working directory
+let g:ctrlp_working_path_mode = ''
+
