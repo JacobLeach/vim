@@ -26,6 +26,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 "Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype indent plugin on
@@ -78,8 +79,13 @@ set undoreload=10000
 " Set buffer size to 10,000
 set viminfo='50,<10000,s10000,h
 
-" Show me where column 80 is
-set colorcolumn=80
+" Show me where column 120 is
+set colorcolumn=120
+
+" Use jj to exit insert mode
+imap jj <Esc>
+
+let mapleader="\<Space>"
 
 "Plugin Configuration
 
@@ -95,7 +101,7 @@ let g:HardMode_level = 'wannabe'
 let g:hardtime_default_on = 0
 
 " Set EasyMotion control key to space
-let g:EasyMotion_leader_key = '<Space>'
+let g:EasyMotion_leader_key = ';'
 
 " YCM whitelist
 let g:ycm_filetype_whitelist = { '*': 1 }
@@ -150,4 +156,10 @@ let g:clang_format#style_options = {
 
 " Search from working directory
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 
+noremap <leader>d :GitGutterLineHighlightsToggle<cr>
+highlight link GitGutterChangeDeleteLine DiffChange
