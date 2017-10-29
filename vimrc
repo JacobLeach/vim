@@ -10,8 +10,6 @@ Plugin 'tpope/vim-vividchalk'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'wikitopian/hardmode'
-Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-surround'
 " Plugin 'marijnh/tern_for_vim'
 Plugin 'travitch/hasksyn'
@@ -26,6 +24,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 filetype indent plugin on
@@ -55,8 +54,6 @@ set autoindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
-" Indent Javascript files 4 spaces
-autocmd FileType javascript set tabstop=4|set shiftwidth=4
 
 " Searching stuff
 set incsearch
@@ -91,14 +88,6 @@ let mapleader="\<Space>"
 " Not really what this changes
 let g:cpp_class_scope_highlight = 1
 
-" Enable hard mode
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-" Enable backspace and h,j,k,l
-let g:HardMode_level = 'wannabe'
-
-" Enable / disable hard time
-let g:hardtime_default_on = 0
-
 " Set EasyMotion control key to space
 let g:EasyMotion_leader_key = ';'
 
@@ -116,8 +105,8 @@ let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_complete_in_comments = 1
 
-" Remove trailing whitespace in Javscript files, and HTML template files
-autocmd bufwritepre *.hs,*.js,*.tpl.html silent! :%s/\s\+$//
+" Remove trailing whitespace in Haskell, Javscript, HTML, and cabal files
+autocmd bufwritepre *.hs,*.js,*.tpl.html,*.cabal silent! :%s/\s\+$//
 
 "Replace default movement with camel case sensitive ones
 "map <silent> w <Plug>CamelCaseMotion_w
@@ -159,6 +148,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+
+let g:ctrlp_custom_ignore = '\.git\|node_modules'
 
 noremap <leader>d :GitGutterLineHighlightsToggle<cr>
 highlight link GitGutterChangeDeleteLine DiffChange
