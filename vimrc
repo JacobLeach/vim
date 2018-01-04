@@ -153,3 +153,5 @@ let g:ctrlp_custom_ignore = '\.git\|node_modules'
 
 noremap <leader>d :GitGutterLineHighlightsToggle<cr>
 highlight link GitGutterChangeDeleteLine DiffChange
+
+let g:yankring_history_file = '.vim/.yankring_history'
