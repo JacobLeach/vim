@@ -106,7 +106,7 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_complete_in_comments = 1
 
 " Remove trailing whitespace in Haskell, Javscript, HTML, and cabal files
-autocmd bufwritepre *.hs,*.js,*.tpl.html,*.cabal silent! :%s/\s\+$//
+autocmd bufwritepre *.hs,*.js,*.tpl.html,*.cabal,*.vue silent! :%s/\s\+$//
 
 "Replace default movement with camel case sensitive ones
 "map <silent> w <Plug>CamelCaseMotion_w
