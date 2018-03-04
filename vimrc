@@ -1,19 +1,20 @@
-" Vundle plugin manager
 set nocompatible
+
+" Vundle plugin manager
+if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
 filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'valloric/MatchTagAlways'
-Plugin 'tpope/vim-vividchalk'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 " Plugin 'marijnh/tern_for_vim'
 Plugin 'travitch/hasksyn'
-Plugin 'mtglsk/mushroom'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'derekwyatt/vim-fswitch'
@@ -25,8 +26,16 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'posva/vim-vue'
+Plugin 'leafgarland/typescript-vim'
+
+" Colorschemes
+Plugin 'gkjgh/cobalt'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'mtglsk/mushroom'
 
 call vundle#end()
+endif
+
 filetype indent plugin on
 
 " Display UTF8
@@ -34,7 +43,11 @@ set encoding=utf-8
 
 " Colors
 syntax on
+if filereadable(expand('~/.vim/bundle/mushroom/colors/mushroom.vim'))
 colorscheme mushroom
+else
+colorscheme slate
+endif
 set t_Co=256
 
 " Always show status line
@@ -83,6 +96,8 @@ imap jj <Esc>
 
 let mapleader="\<Space>"
 
+if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
+
 "Plugin Configuration
 
 " Not really what this changes
@@ -96,6 +111,8 @@ let g:ycm_filetype_whitelist = { '*': 1 }
 
 " Map <Leader>g to YCM's best guess GoTo function
 noremap <leader>g :YcmCompleter GoTo<CR>
+" `GoTo` is not supported for Typescript so explicitly use `GoToDefinition`
+autocmd FileType typescript noremap <leader>g :YcmCompleter GoToDefinition<CR>
 
 " let YCM to complete after 1 character
 let g:ycm_min_num_of_chars_for_completion = 1
@@ -155,3 +172,5 @@ noremap <leader>d :GitGutterLineHighlightsToggle<cr>
 highlight link GitGutterChangeDeleteLine DiffChange
 
 let g:yankring_history_file = '.vim/.yankring_history'
+
+endif
